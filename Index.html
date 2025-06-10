@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adhiwebs - Ad Posting, Web Making & HTML to App Conversion</title>
+    <link rel="icon" type="image/png" href="Adhi_web.png"> <style>
+        /* Light Mode Default Styles */
+        :root {
+            --primary-color: #3498db; /* A blue shade */
+            --secondary-color: #2ecc71; /* A green shade */
+            --accent-color: #f39c12; /* An orange shade */
+            --text-color: #333;
+            --light-bg: #f8f8f8;
+            --white: #fff;
+            --dark-bg: #222;
+            --dark-text: #eee;
+            --dark-header-footer: #181818;
+            --gradient-start: #00c6ff;
+            --gradient-end: #0072ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode {
+            color: var(--dark-text);
+            background-color: var(--dark-bg);
+        }
+
+        body.dark-mode .header,
+        body.dark-mode .footer {
+            background-color: var(--dark-header-footer);
+            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-mode .header a,
+        body.dark-mode .footer a,
+        body.dark-mode .logo-text h1,
+        body.dark-mode .logo-text p {
+            color: var(--dark-text);
+        }
+
+        body.dark-mode section {
+            background-color: #333; /* Darker background for sections */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark-mode section:nth-of-type(even) {
+            background-color: #444; /* Slightly different dark background for even sections */
+        }
+
+        body.dark-mode .service-item,
+        body.dark-mode .website-card, /* Dark mode for new website cards */
+        body.dark-mode .portfolio-item,
+        body.dark-mode .contact-form {
+            background-color: #444;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-mode .contact-form input,
+        body.dark-mode .contact-form textarea,
+        body.dark-mode .contact-form select { /* Added select for dark mode */
+            background-color: #555;
+            color: var(--dark-text);
+            border-color: #666;
+        }
+
+        body.dark-mode .contact-form input:focus,
+        body.dark-mode .contact-form textarea:focus,
+        body.dark-mode .contact-form select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.2);
+        }
+
+        body.dark-mode .footer p {
+            color: #aaa;
+        }
+
+        body.dark-mode .nav ul li a::after {
+            background: var(--accent-color);
+        }
+
+        body.dark-mode .btn {
+            color: var(--dark-text); /* Ensure button text remains visible */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-mode .btn:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            color: var(--dark-text);
+        }
+
+        body.dark-mode #scrollToTopBtn {
+            background-color: var(--accent-color);
+            color: var(--dark-header-footer); /* Button icon color */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        body.dark-mode #scrollToTopBtn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .dark-mode-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            padding: 0;
+            margin-left: 20px;
+            outline: none;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            color: var(--dark-text);
+        }
+
+        .dark-mode-toggle:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- General Shared Styles (Light & Dark) --- */
+        *, *::before, *::after {
+            box-sizing: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        h1, h2, h3, h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            margin: 10px auto 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--primary-color), var(--gradient-end));
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: var(--white); /* Ensure text color stays white */
+        }
+
+        section {
+            padding: 80px 0;
+            margin-bottom: 20px; /* Space between sections */
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        section:nth-of-type(even) {
+            background-color: var(--light-bg);
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 50px; /* Adjust as needed for your logo size */
+            margin-right: 15px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.8em;
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 0.9em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center; /* Align nav items and toggle */
+        }
+
+        .nav ul li {
+            margin-left: 30px;
+        }
+
+        .nav ul li a {
+            font-weight: 600;
+            position: relative;
+        }
+
+        .nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .nav ul li a:hover::after,
+        .nav ul li a.active::after {
+            width: 100%;
+        }
+
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ffffff" fill-opacity="0.05" %3E%3Cpath d="M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V95zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 85h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V85zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 75h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V75zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 65h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V65zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 55h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V55zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 45h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V45zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 35h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V35zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 25h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V25zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 15h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V15zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM96 5h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h96V5zm-11 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zm-24 0h-4v-1h4v1zM0 0h1v96H0V0zm1 0h95v1H1V0zm0 96h1V100H1v-4zm95 0h1V100h-1v-4zM96 0h4v1h-4V0zm0 1h1v95h-1V1zm4 95h-1v4h1v-4zm-1 0h-4v1h4v-1zM95 0h1v100h-1V0zm0 100h1v-4h-1v4zM100 1h-4v1h4V1zM100 96h-4v1h4v-1z"%3E%3C/path%3E%3C/g%3E%3C/svg%3E');
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--white);
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            color: var(--white);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .service-item {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-item:hover::before {
+            transform: translateY(0);
+        }
+
+        .service-item i { /* For Font Awesome or similar icons */
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Our Websites Section */
+        #our-websites {
+            background-color: var(--white);
+            padding: 80px 0;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        #our-websites .container h2 {
+            margin-bottom: 50px;
+        }
+
+        .website-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .website-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .website-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .website-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .website-info {
+            padding: 20px;
+        }
+
+        .website-info h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .website-info p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .website-info a.visit-site-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .website-info a.visit-site-btn:hover {
+            background-color: var(--gradient-end);
+        }
+
+        /* Portfolio Section (kept for app conversion cases, etc.) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-info p {
+            font-size: 0.95em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info p i {
+            margin-right: 10px;
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button[type="submit"] {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-nav ul li {
+            margin: 0 15px 10px 15px;
+        }
+
+        .footer-nav ul li a {
+            color: var(--white);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer p {
+            font-size: 0.9em;
+            margin: 0;
+            color: #ccc;
+        }
+
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            font-size: 1.8em;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-container {
+                margin-bottom: 20px;
+            }
+
+            .nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav ul li {
+                margin: 0 10px 10px 10px;
+            }
+
+            .dark-mode-toggle {
+                margin-left: 0; /* Remove margin on smaller screens if needed */
+                margin-top: 10px; /* Add some space if it wraps below nav */
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .services-grid,
+            .website-grid, /* Responsive for new website grid */
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info,
+            .contact-form {
+                min-width: unset; /* Remove min-width for mobile */
+                width: 100%;
+            }
+
+            .footer-nav ul {
+                flex-direction: column;
+            }
+
+            .footer-nav ul li {
+                margin: 5px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .logo-container img {
+                height: 40px;
+            }
+
+            .logo-text h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo-container">
+                <img src="Adhi_web.png" alt="Adhiwebs Logo">
+                <div class="logo-text">
+                    <h1>Adhiwebs</h1>
+                    <p>THE ULTIMATE WEB PARTNER</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#our-websites">Our Websites</a></li> <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <button id="darkModeToggle" class="dark-mode-toggle" aria-label="Toggle dark mode">
+                            <i class="fas fa-moon"></i> </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h1>Unlock Your Digital Potential.</h1>
+                <p>Specializing in Ad Posting Platforms & Seamless HTML to App Conversions.</p>
+                <a href="#contact" class="btn">Get a Free Consultation</a>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2>About Adhiwebs</h2>
+                <p>At Adhiwebs, we are experts in crafting dynamic online platforms and transforming existing web content into native mobile applications. Our mission is to empower businesses and individuals with robust, user-friendly solutions for online classifieds and mobile presence.</p>
+                <p>Whether you're looking to build a scalable ad posting website from scratch or convert your responsive HTML site into a high-performance Android or iOS app, we provide end-to-end services tailored to your unique requirements. We focus on delivering seamless user experiences, powerful functionality, and efficient development processes.</p>
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://contactn.netlify.app/" class="btn">CONTACT NOW</a> </div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Specialized Services</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <i class="fas fa-bullhorn"></i> <h3>Ad Posting Website Development</h3>
+                        <p>Create powerful, scalable platforms for classifieds, job listings, real estate, or any ad-based community.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-mobile-alt"></i> <h3>HTML to Native App Conversion</h3>
+                        <p>Transform your existing HTML, CSS, and JavaScript website into a fast, reliable Android or iOS application.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-desktop"></i> <h3>Custom Web Development</h3>
+                        <p>Beyond ads, we build bespoke websites for various needs, focusing on design, functionality, and performance.</p>
+                    </div>
+                    <div class="service-item">
+                        <i class="fas fa-cogs"></i> <h3>Ongoing Support & Maintenance</h3>
+                        <p>Ensuring your ad platform or converted app runs smoothly with continuous updates and technical support.</p>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="https://contactn.netlify.app/" class="btn">Explore All Our Services</a> </div>
+            </div>
+        </section>
+
+        <section id="our-websites" class="our-websites">
+            <div class="container">
+                <h2>Websites We Have Made</h2>
+                <div class="website-grid">
+                    <div class="website-card">
+                        <img src="Adbhisn.jpg" alt="FLYING BIRD">
+                        <div class="website-info">
+                            <h3>FLYING BIRD</h3>
+                            <p>WE ARE INDRODUCING OUR OLD FAVORATE GAME COPY FLYING BIRD .THIS JUST FOR ENTERTAINMENT PURPOSE .TO VIEW CLICK THE LINK</p>
+                            <a href="https://adhiflyinggame.netlify.app/" target="_blank" class="visit-site-btn">Visit Website</a>
+                        </div>
+                    </div>
+                    <div class="website-card">
+                        <img src="https://via.placeholder.com/400x200/555555/ffffff?text=YourWebsite2.net" alt="ADHI AI">
+                        <div class="website-info">
+                            <h3>ADHI AI</h3>
+                            <p>THE POWERFUL AI FOR ASSISTANTS.THE WORKING ON PROGRESSING.COMMING SOON.</p>
+                            <a href="" target="_blank" class="visit-site-btn">Visit Website</a>
+                        </div>
+                    </div>
+                    <div class="website-card">
+                        <img src="https://via.placeholder.com/400x200/555555/ffffff?text=YourWebsite3.org" alt="COMMING SOON">
+                        <div class="website-info">
+                            <h3>COMMING SOON</h3>
+                            <p>A SHOPPING WEBSITE . COMMING SOON</p>
+                            <a href="" target="_blank" class="visit-site-btn">Visit Website</a>
+                        </div>
+                    </div>
+                    </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="https://adhihome.netlify.app/" class="btn">View All Our Web Creations</a> </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <h2>Our Conversion & Specific Projects</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="Html_apk.png" alt="HTML to App Conversion Project">
+                        <div class="portfolio-info">
+                            <h3>We convert HTML to Android App</h3>
+                            <p>We convert your website to  ANDROID application .</p>
+                            <a href="https://contactn.netlify.app/">Contact now</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="Html_ios.jpg" alt="HTML to iOS App Conversion">
+                        <div class="portfolio-info">
+                            <h3> Website to iOS App</h3>
+                            <p>Transformed a content-rich WEB into a sleek, native iOS application for better user experience.</p>
+                            <a href="https://contactn.netlify.app/">contact now</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="Create-a-Website.jpg" alt="Custom Platform Development">
+                        <div class="portfolio-info">
+                            <h3>WEB DESINGING</h3>
+                            <p>Developed a unique Website for streamlined inventory tracking and reporting.</p>
+                            <a href="https://contactn.netlify.app/">contact now</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 50px;">
+                    <a href="https://adhihome.netlify.app/" class="btn">View All Conversion Projects</a> </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Get in Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Connect with Us</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> NEDUMANGAD, KULAPPADA PANACOFE PO ( for correct address contact in gmail</p>
+                        <p><i class="fas fa-phone-alt"></i> +91 813887234(not recommended)</p>
+                        <p><i class="fas fa-envelope"></i> sachinadithvs@gmail.com</p>
+                        <p><i class="fas fa-clock"></i> SATURDAY SUNDAY 9:00 AM - 6:00 PM IST</p>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Tell Us About Your Project</h3>
+                        <form action="#" method="POST"> <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Interested Service</label>
+                                <select id="service" name="service">
+                                    <option value="">Select a service</option>
+                                    <option value="ad-posting-website">Ad Posting </option>
+                                    <option value="html-to-app-conversion">HTML to App Conversion</option>
+                                    <option value="general-web-development">General Web Development</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" name="message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn"onclick="location.href='https://contactn.netlify.app/  '">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#our-websites">Our Websites</a></li> <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-service.html">Terms of Service</a></li>
+                </ul>
+            </nav>
+            <div class="social-links">
+                <a href="https://facebook.com/adhiwebs" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://twitter.com/adhiwebs" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://linkedin.com/company/adhiwebs" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://instagram.com/adhiwebs" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; <span id="currentYear"></span> Adhiwebs. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the current year for the footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Remove 'active' class from all nav links
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    // Add 'active' class to the clicked link
+                    this.classList.add('active');
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Highlight active nav link on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav ul li a');
+
+            function highlightNavLink() {
+                let current = '';
+                sections.forEach(section => {
+                    // Check if section is in viewport (adjust offset for header)
+                    const sectionTop = section.offsetTop - (document.querySelector('.header').offsetHeight + 20); // Header height + some buffer
+                    const sectionBottom = sectionTop + section.offsetHeight;
+
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionBottom) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavLink);
+            // Initial call to set active link on page load
+            highlightNavLink();
+
+
+            // Scroll to Top Button functionality
+            const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+            window.onscroll = function() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    scrollToTopBtn.style.display = "block";
+                } else {
+                    scrollToTopBtn.style.display = "none";
+                }
+            };
+
+            scrollToTopBtn.addEventListener('click', function() {
+                document.body.scrollTop = 0; // For Safari
+                document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            });
+
+            // Dark Mode Toggle functionality
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            // Check for saved theme preference in localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Change icon to sun
+            } else if (savedTheme === 'light') {
+                 body.classList.remove('dark-mode');
+                 darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Change icon to moon
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // If no preference saved, check OS preference
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+
+
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                if (body.classList.contains('dark-mode')) {
+                    localStorage.setItem('theme', 'dark');
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Sun icon
+                } else {
+                    localStorage.setItem('theme', 'light');
+                    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Moon icon
+                }
+            });
+
+            // Simple form submission handler (client-side only)
+            const contactForm = document.querySelector('.contact-form form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Prevent default form submission
+
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const service = document.getElementById('service').value;
+                    const message = document.getElementById('message').value;
+
+                    // In a real application, you'd send this data to a server
+                    // using fetch() or XMLHttpRequest.
+                    console.log({ name, email, service, message });
+                    alert(`Thank you, ${name}! We received your inquiry about "${service}". We will get back to you soon at ${email}.`);
+
+                    // Clear the form
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
