@@ -3,215 +3,768 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Google tag (gtag.js) -->
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-K28SVSQT');</script>
-<!-- End Google Tag Manager -->
-    <head>
-  <!-- Page Title (KEEP ONLY ONE) -->
-  <title>Website Builder & Tech Support | WEBSINARO </title>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-K28SVSQT');</script>
+    <!-- End Google Tag Manager -->
 
-  <!-- SEO Description -->
-  <meta name="description" content="Join live online webinars on technology, startups, coding, AI and career growth. Learn from experts on Websinaro." />
+    <title>Website Builder & Tech Support | WEBSINARO</title>
+    <meta name="description" content="Join live online webinars on technology, startups, coding, AI and career growth. Learn from experts on Websinaro." />
+    <meta name="keywords" content="online webinars, tech webinars, free webinars, AI webinars, coding webinars, startup events" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://websinaro.netlify.app/" />
+    <meta property="og:title" content="Free Website builder & Tech Supporter | Websinaro" />
+    <meta property="og:description" content="Make Your Website Faster With Us. Join In Our Web Service And Also Enjoy The unlimited Access." />
+    <meta property="og:url" content="https://websinaro.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://websinaro.netlify.app/1000034625.jpg" />
 
-  <!-- Optional keywords -->
-  <meta name="keywords" content="online webinars, tech webinars, free webinars, AI webinars, coding webinars, startup events" />
-
-  <!-- Search Engine Control -->
-  <meta name="robots" content="index, follow" />
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://websinaro.netlify.app/" />
-
-  <!-- Social Sharing -->
-  <meta property="og:title" content="Free Website builder & Tech Supporter | Websinaro" />
-  <meta property="og:description" content="Make Your Website Faster With Us.Join In Our Web Service And Also Enjoy The unlimited Access." />
-  <meta property="og:url" content="https://websinaro.netlify.app/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://websinaro.netlify.app/1000034625.jpg" />
-
-    </head>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         :root {
-            --bg: #000000;
+            --bg: #020205;
             --accent: #00d2ff;
-            --card-surface: #0a0a0a;
-            --border-subtle: rgba(255, 255, 255, 0.05);
-            --text-secondary: #888888;
+            --accent2: #7b5ea7;
+            --card-surface: #0a0a12;
+            --card-hover: #0f0f1a;
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-hover: rgba(0,210,255,0.35);
+            --text-primary: #f0f0f5;
+            --text-secondary: #6b6b80;
+            --glow: 0 0 40px rgba(0,210,255,0.15);
         }
 
-        html, body {
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
             background-color: var(--bg);
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            font-family: 'Syne', sans-serif;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        * { box-sizing: border-box; }
+        /* ── NOISE OVERLAY ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.4;
+        }
 
-        .container { 
+        /* ── AMBIENT GLOW BLOBS ── */
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0;
+            animation: blobFadeIn 2s forwards;
+        }
+        .blob-1 { width: 600px; height: 600px; background: rgba(0,210,255,0.06); top: -200px; right: -150px; animation-delay: 0.3s; }
+        .blob-2 { width: 500px; height: 500px; background: rgba(123,94,167,0.07); bottom: 10%; left: -150px; animation-delay: 0.6s; }
+        .blob-3 { width: 400px; height: 400px; background: rgba(0,210,255,0.04); bottom: 40%; right: 10%; animation-delay: 0.9s; }
+
+        @keyframes blobFadeIn {
+            to { opacity: 1; }
+        }
+
+        .container {
             width: 100%;
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 28px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* --- Navigation --- */
+        /* ── NAV ── */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 0;
+            padding: 28px 0;
             border-bottom: 1px solid var(--border-subtle);
+            opacity: 0;
+            animation: slideDown 0.7s 0.1s forwards;
         }
-        .logo { font-weight: 700; font-size: 0.9rem; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; }
-        .logo img { height: 22px; border-radius: 4px; }
-        
-        .nav-links { display: none; }
-        @media (min-width: 768px) { .nav-links { display: flex; gap: 30px; } }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* --- Hero Section --- */
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        .logo img { height: 22px; border-radius: 4px; }
+        .logo-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; display: inline-block; box-shadow: 0 0 10px var(--accent); animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+
+        .nav-links { display: none; }
+        @media(min-width:768px){ .nav-links { display: flex; gap: 32px; align-items: center; } }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-cta {
+            background: transparent;
+            border: 1px solid var(--border-hover);
+            color: var(--accent) !important;
+            padding: 10px 22px;
+            border-radius: 100px;
+            transition: background 0.2s, box-shadow 0.2s !important;
+        }
+        .nav-cta:hover { background: rgba(0,210,255,0.08) !important; box-shadow: var(--glow) !important; }
+
+        /* ── HERO ── */
         .hero {
             display: grid;
             grid-template-columns: 1fr;
-            min-height: 70vh;
+            min-height: 80vh;
             align-items: center;
-            padding: 80px 0;
-            gap: 50px;
+            padding: 90px 0 70px;
+            gap: 60px;
         }
-        @media (min-width: 1000px) { .hero { grid-template-columns: 1.2fr 0.8fr; text-align: left; } }
+        @media(min-width:1000px){ .hero { grid-template-columns: 1.3fr 0.7fr; text-align: left; } }
 
-        .hero-content h1 { 
-            font-size: clamp(2.8rem, 8vw, 5rem); 
-            font-weight: 700; 
-            line-height: 0.9; 
-            letter-spacing: -3px; 
-            margin-bottom: 25px; 
+        .hero-content { opacity: 0; animation: heroReveal 0.9s 0.4s forwards; }
+        @keyframes heroReveal {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- New Description Section --- */
+        .hero-eyebrow {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8.5vw, 5.5rem);
+            font-weight: 800;
+            line-height: 0.9;
+            letter-spacing: -3px;
+            margin-bottom: 30px;
+        }
+        .hero-content h1 .line { display: block; overflow: hidden; }
+        .hero-content h1 .line span {
+            display: block;
+            animation: lineReveal 0.8s cubic-bezier(0.16,1,0.3,1) both;
+        }
+        .hero-content h1 .line:nth-child(1) span { animation-delay: 0.5s; }
+        .hero-content h1 .line:nth-child(2) span { animation-delay: 0.65s; }
+        .hero-content h1 .line:nth-child(3) span { animation-delay: 0.8s; }
+
+        @keyframes lineReveal {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .accent-text { color: var(--accent); }
+
         .studio-description {
-            border-left: 2px solid var(--accent);
+            border-left: 2px solid rgba(0,210,255,0.4);
             padding-left: 25px;
-            margin-bottom: 40px;
+            margin-bottom: 45px;
+            opacity: 0;
+            animation: fadeUp 0.7s 1.1s forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .studio-description p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-secondary);
-            line-height: 1.7;
-            font-weight: 300;
-            max-width: 550px;
+            line-height: 1.75;
+            font-weight: 400;
+            max-width: 540px;
         }
 
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.7s 1.3s forwards;
+        }
+
+        .cta-btn {
+            background: var(--accent);
+            color: #000;
+            padding: 17px 50px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            transition: transform 0.25s, box-shadow 0.25s;
+            box-shadow: 0 0 30px rgba(0,210,255,0.3);
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0,210,255,0.5);
+        }
+
+        .cta-secondary {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+        .cta-secondary:hover { color: var(--text-primary); }
+        .cta-secondary i { transition: transform 0.2s; }
+        .cta-secondary:hover i { transform: translateX(4px); }
+
+        /* ── SENTINEL VISUAL ── */
         .sentinel-hub {
             display: flex;
             justify-content: center;
             align-items: flex-end;
             gap: 15px;
+            opacity: 0;
+            animation: fadeUp 0.9s 0.8s forwards;
         }
         .sentinel {
-            width: 60px; height: 140px;
-            background: #0d0d0d;
+            width: 62px; height: 145px;
+            background: linear-gradient(180deg, #0e0e18 0%, #060608 100%);
             border: 1px solid var(--border-subtle);
             clip-path: polygon(50% 0%, 100% 10%, 100% 90%, 50% 100%, 0% 90%, 0% 10%);
             display: flex; justify-content: center; align-items: center;
+            gap: 8px;
         }
-        .sentinel-main { height: 190px; width: 80px; border-color: rgba(0, 210, 255, 0.2); }
-        .eye { width: 8px; height: 8px; background: var(--accent); box-shadow: 0 0 15px var(--accent); margin: 0 4px; }
+        .sentinel-main {
+            height: 195px; width: 82px;
+            border-color: rgba(0,210,255,0.15);
+            box-shadow: 0 0 60px rgba(0,210,255,0.08);
+        }
+        .eye {
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent), 0 0 25px rgba(0,210,255,0.5);
+            animation: blink 3.5s infinite;
+        }
+        .eye:nth-child(2) { animation-delay: 1.8s; }
+        @keyframes blink {
+            0%,90%,100%{opacity:1} 95%{opacity:0}
+        }
 
-        /* --- Bento Capability Grid --- */
+        /* Stat Row */
+        .stat-row {
+            display: flex;
+            gap: 40px;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            margin: 60px 0;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.7s 1.5s forwards;
+        }
+        .stat { flex: 1; min-width: 120px; }
+        .stat-num {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            color: var(--text-primary);
+            font-family: 'Space Mono', monospace;
+        }
+        .stat-num span { color: var(--accent); }
+        .stat-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+
+        /* ── CAPABILITIES ── */
+        .section-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            color: var(--accent);
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .section-label::before { content: '//'; opacity: 0.5; }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 60px;
+            line-height: 1;
+        }
+
         .bento-wrap {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
-            margin: 100px 0;
+            gap: 16px;
+            margin: 0 0 120px;
         }
-        @media (min-width: 768px) { .bento-wrap { grid-template-columns: repeat(2, 1fr); } }
-        @media (min-width: 1024px) { .bento-wrap { grid-template-columns: repeat(3, 1fr); } }
+        @media(min-width:768px){ .bento-wrap { grid-template-columns: repeat(2, 1fr); } }
+        @media(min-width:1024px){ .bento-wrap { grid-template-columns: repeat(3, 1fr); } }
 
         .bento-box {
             background: var(--card-surface);
             border: 1px solid var(--border-subtle);
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 40px;
-            transition: 0.3s;
+            transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            cursor: default;
         }
-        .bento-box:hover { background: #111; border-color: var(--accent); }
-        .bento-box i { font-size: 1.5rem; color: var(--accent); margin-bottom: 25px; display: block; }
-        .bento-box h3 { font-size: 1.2rem; margin-bottom: 15px; font-weight: 600; }
-        .bento-box p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+        .bento-box:hover {
+            background: var(--card-hover);
+            border-color: rgba(0,210,255,0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(0,210,255,0.06);
+        }
+        .bento-icon {
+            width: 46px; height: 46px;
+            background: rgba(0,210,255,0.08);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 28px;
+            font-size: 1.1rem;
+            color: var(--accent);
+            transition: background 0.3s;
+        }
+        .bento-box:hover .bento-icon { background: rgba(0,210,255,0.15); }
+        .bento-box h3 { font-size: 1.1rem; margin-bottom: 14px; font-weight: 700; }
+        .bento-box p { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.65; }
 
-        /* --- Projects --- */
-        .section-label { font-size: 0.7rem; letter-spacing: 3px; color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: 20px; display: block; }
-        
-        .work-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        @media (min-width: 768px) { .work-grid { grid-template-columns: 1fr 1fr; } }
+        /* ── PROJECTS SECTION ── */
+        #deployments { margin-bottom: 140px; }
 
-        .project {
+        .work-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        @media(min-width:768px){ .work-grid { grid-template-columns: 1fr 1fr; } }
+        @media(min-width:1024px){ .work-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+        /* ── PROJECT CARD ── */
+        .project-card {
             background: var(--card-surface);
-            border-radius: 24px;
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
             overflow: hidden;
             text-decoration: none;
             color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+        }
+        .project-card:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 40px rgba(0,210,255,0.1);
+            transform: translateY(-8px);
+        }
+
+        .project-img-wrap {
+            position: relative;
+            overflow: hidden;
+            height: 260px;
+            background: #0a0a14;
+        }
+
+        /* Browser mock for project screenshots */
+        .browser-bar {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 32px;
+            background: #111120;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            padding: 0 14px;
+            gap: 6px;
+            z-index: 2;
+        }
+        .browser-dot { width: 9px; height: 9px; border-radius: 50%; }
+        .browser-dot.r { background: #ff5f57; }
+        .browser-dot.y { background: #ffbd2e; }
+        .browser-dot.g { background: #28c840; }
+        .browser-url {
+            flex: 1;
+            height: 16px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 4px;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .browser-url span {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.55rem;
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .project-iframe-wrap {
+            position: absolute;
+            top: 32px; left: 0; right: 0; bottom: 0;
+            overflow: hidden;
+        }
+
+        /* Fallback visual when iframe can't load */
+        .project-visual {
+            position: absolute;
+            top: 32px; left: 0; right: 0; bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-mock {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top;
+            transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s;
+            filter: saturate(0.8) brightness(0.85);
+        }
+        .project-card:hover .project-mock {
+            transform: scale(1.05);
+            filter: saturate(1) brightness(1);
+        }
+
+        /* Overlay gradient */
+        .project-img-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 80px;
+            background: linear-gradient(to top, var(--card-surface), transparent);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* Live badge */
+        .live-badge {
+            position: absolute;
+            top: 44px; right: 12px;
+            background: rgba(0,210,255,0.1);
+            border: 1px solid rgba(0,210,255,0.3);
+            border-radius: 100px;
+            padding: 4px 10px;
+            font-size: 0.6rem;
+            font-family: 'Space Mono', monospace;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            z-index: 4;
+        }
+        .live-dot { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; animation: pulse 1.5s infinite; }
+
+        .concept-badge {
+            background: rgba(123,94,167,0.1);
+            border-color: rgba(123,94,167,0.3);
+            color: var(--accent2);
+        }
+        .concept-badge .live-dot { background: var(--accent2); animation: none; }
+
+        /* Project Meta */
+        .project-meta {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex: 1;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-name {
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .project-type {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.6rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 3px;
+        }
+        .project-arrow {
+            width: 34px; height: 34px;
             border: 1px solid var(--border-subtle);
-            display: block;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+            flex-shrink: 0;
         }
-        .project img { width: 100%; height: 350px; object-fit: cover; opacity: 0.6; transition: 0.5s; }
-        .project:hover img { opacity: 1; transform: scale(1.03); }
-        .project-meta { padding: 30px; display: flex; justify-content: space-between; align-items: center; }
-
-        /* --- Footer CTA --- */
-        .footer-cta { padding: 120px 0; text-align: center; border-top: 1px solid var(--border-subtle); }
-        .cta-btn {
-            background: #fff; color: #000; padding: 20px 60px; border-radius: 100px;
-            text-decoration: none; font-weight: 700; font-size: 0.9rem; text-transform: uppercase;
-            display: inline-block; transition: 0.3s;
+        .project-card:hover .project-arrow {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: #000;
+            transform: rotate(-45deg);
         }
-        .cta-btn:hover { background: var(--accent); color: #000; transform: translateY(-3px); }
 
-        footer { padding: 40px 0; display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary); }
+        .project-desc {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 4px;
+        }
+        .tag {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-subtle);
+            border-radius: 100px;
+            padding: 4px 12px;
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            font-family: 'Space Mono', monospace;
+            letter-spacing: 0.5px;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .project-card:hover .tag {
+            border-color: rgba(0,210,255,0.15);
+            color: var(--text-primary);
+        }
+
+        .project-stack {
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            font-family: 'Space Mono', monospace;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .project-stack i { color: var(--accent); font-size: 0.7rem; }
+
+        /* Legacy Projects row (2-col) */
+        .work-grid-legacy {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 24px;
+        }
+        @media(min-width:768px){ .work-grid-legacy { grid-template-columns: 1fr 1fr; } }
+
+        /* ── FOOTER CTA ── */
+        .footer-cta {
+            padding: 130px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+        }
+        .footer-cta::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 400px;
+            background: radial-gradient(ellipse, rgba(0,210,255,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .footer-cta h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            letter-spacing: -3px;
+            margin-bottom: 14px;
+            font-weight: 800;
+            position: relative;
+        }
+        .footer-cta p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 45px;
+            position: relative;
+        }
+
+        footer {
+            padding: 35px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.72rem;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-subtle);
+            font-family: 'Space Mono', monospace;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        footer a { color: inherit; text-decoration: none; transition: color 0.2s; }
+        footer a:hover { color: var(--accent); }
+        .footer-links { display: flex; gap: 28px; }
+
+        /* ── SCROLL REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* ── MARQUEE ── */
+        .marquee-wrap {
+            overflow: hidden;
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 18px 0;
+            margin: 80px 0;
+        }
+        .marquee-track {
+            display: flex;
+            gap: 60px;
+            animation: marquee 22s linear infinite;
+            white-space: nowrap;
+            width: max-content;
+        }
+        .marquee-item {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .marquee-item::before { content: '✦'; color: var(--accent); font-size: 0.6rem; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── CURSOR GLOW (desktop only) ── */
+        @media(pointer: fine) {
+            .cursor-glow {
+                position: fixed;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(0,210,255,0.06) 0%, transparent 70%);
+                pointer-events: none;
+                z-index: 9998;
+                transform: translate(-50%, -50%);
+                transition: opacity 0.3s;
+            }
+        }
     </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K28SVSQT"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+
+<!-- Cursor Glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Ambient Blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
 <div class="container">
+
+    <!-- ── NAV ── -->
     <nav>
-        <div class="logo">
-            <img src="1000034625.jpg" alt="Logo">
+        <a href="#" class="logo">
+            <img src="1000034625.jpg" alt="Logo" onerror="this.style.display='none'">
+            <div class="logo-dot"></div>
             WEBSINARO
-        </div>
+        </a>
         <div class="nav-links">
             <a href="#capability">Capability</a>
-            <a href="#deployments">Deployments</a>
-            <a href="https://contactn.netlify.app" style="color:var(--accent)">Initialize</a>
+            <a href="#deployments">Work</a>
+            <a href="https://contactn.netlify.app" class="nav-cta">Initialize</a>
         </div>
     </nav>
 
+    <!-- ── HERO ── -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Engineered for <br><span style="color:var(--accent)">Performance.</span></h1>
-            
+            <div class="hero-eyebrow">Digital Engineering Studio</div>
+            <h1>
+                <div class="line"><span>Designed</span></div>
+                <div class="line"><span>for <span class="accent-text">Growth.</span></span></div>
+            </h1>
             <div class="studio-description">
                 <p>
-                    WEBSINARO is a boutique digital engineering studio. We bridge the gap between complex web architecture and intuitive mobile experiences, delivering high-speed solutions that scale with your vision.
+                    WEBSINARO crafts high-performance digital experiences — from fast-loading websites to AI-integrated platforms. Built to scale. Built to convert.
                 </p>
             </div>
-
-            <a href="https://contactn.netlify.app" class="cta-btn">Start a Project</a>
+            <div class="hero-actions">
+                <a href="https://contactn.netlify.app" class="cta-btn">Start a Project</a>
+                <a href="#deployments" class="cta-secondary">Selected Work <i class="fas fa-arrow-right"></i></a>
+            </div>
         </div>
 
         <div class="sentinel-hub" id="hub">
@@ -221,78 +774,358 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </section>
 
+    <!-- ── STATS ── -->
+    <div class="stat-row">
+        <div class="stat">
+            <div class="stat-num">10<span>+</span></div>
+            <div class="stat-label">Live Deployments</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Industry Verticals</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">100<span>%</span></div>
+            <div class="stat-label">Mobile-First</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">∞</div>
+            <div class="stat-label">Scalability</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ── MARQUEE ── -->
+<div class="marquee-wrap">
+    <div class="marquee-track">
+        <span class="marquee-item">Web Architecture</span>
+        <span class="marquee-item">Mobile-First Design</span>
+        <span class="marquee-item">AI Integration</span>
+        <span class="marquee-item">Firebase Backend</span>
+        <span class="marquee-item">Next.js</span>
+        <span class="marquee-item">SEO Optimization</span>
+        <span class="marquee-item">App Deployment</span>
+        <span class="marquee-item">Performance Engineering</span>
+        <span class="marquee-item">Web Architecture</span>
+        <span class="marquee-item">Mobile-First Design</span>
+        <span class="marquee-item">AI Integration</span>
+        <span class="marquee-item">Firebase Backend</span>
+        <span class="marquee-item">Next.js</span>
+        <span class="marquee-item">SEO Optimization</span>
+        <span class="marquee-item">App Deployment</span>
+        <span class="marquee-item">Performance Engineering</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ── CAPABILITIES ── -->
     <div id="capability">
-        <span class="section-label">Our Capabilities</span>
+        <div class="reveal">
+            <span class="section-label">Capabilities</span>
+            <h2 class="section-title">What we engineer.</h2>
+        </div>
         <div class="bento-wrap">
-            <div class="bento-box">
-                <i class="fas fa-terminal"></i>
+            <div class="bento-box reveal reveal-delay-1">
+                <div class="bento-icon"><i class="fas fa-terminal"></i></div>
                 <h3>Web Architecture</h3>
-                <p>We build lightweight, high-performance websites using modern frameworks focused on core web vitals and SEO dominance.</p>
+                <p>Lightweight, blazing-fast websites built on modern frameworks. Core Web Vitals perfected. SEO dominance by design.</p>
             </div>
-            <div class="bento-box">
-                <i class="fas fa-mobile-alt"></i>
+            <div class="bento-box reveal reveal-delay-2">
+                <div class="bento-icon"><i class="fas fa-mobile-alt"></i></div>
                 <h3>App Deployment</h3>
-                <p>Expert conversion of HTML5 environments into native Android and iOS applications, ensuring a seamless user journey across devices.</p>
+                <p>HTML5 to native Android &amp; iOS — seamlessly converted and shipped. Cross-platform experiences that feel native.</p>
             </div>
-            <div class="bento-box">
-                <i class="fas fa-bullseye"></i>
+            <div class="bento-box reveal reveal-delay-3">
+                <div class="bento-icon"><i class="fas fa-bullseye"></i></div>
                 <h3>Growth Ops</h3>
-                <p>Strategic ad posting and funnel management designed to optimize reach and maximize your digital ROI.</p>
+                <p>Strategic ad funnels and digital reach management. Optimized to maximize ROI and audience retention.</p>
             </div>
         </div>
     </div>
 
-    <div id="deployments" style="margin-top: 50px;">
-        <span class="section-label">Recent Deployments</span>
+    <!-- ── SELECTED WORK ── -->
+    <div id="deployments">
+        <div class="reveal">
+            <span class="section-label">Selected Work</span>
+            <h2 class="section-title">Digital Experiences.</h2>
+        </div>
+
+        <!-- 3 Main Projects -->
         <div class="work-grid">
-            <a href="https://adhiflyinggame.netlify.app" target="_blank" class="project">
-                <img src="Adbhisn.jpg" alt="Flying Bird">
-                <div class="project-meta">
-                    <div>
-                        <h3>FLYING BIRD</h3>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Gaming & Physics Engine</p>
+
+            <!-- PROJECT 1: ARDENTE -->
+            <a href="https://ardente-resturent.vercel.app/" target="_blank" class="project-card reveal reveal-delay-1">
+                <div class="project-img-wrap">
+                    <div class="browser-bar">
+                        <div class="browser-dot r"></div>
+                        <div class="browser-dot y"></div>
+                        <div class="browser-dot g"></div>
+                        <div class="browser-url"><span>ardente-resturent.vercel.app</span></div>
                     </div>
-                    <i class="fas fa-arrow-right"></i>
+                    <div class="project-visual">
+                        <img class="project-mock" src="1.png" alt="Ardente Restaurant Platform"
+                             onerror="this.outerHTML=createFallback('🍽️','Ardente','#c0392b','#e74c3c')">
+                        <!-- Fallback rendered via JS if image not found -->
+                    </div>
+                    <div class="live-badge">
+                        <div class="live-dot"></div> Live
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-name">ARDENTE</div>
+                            <div class="project-type">Restaurant Platform</div>
+                        </div>
+                        <div class="project-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <p class="project-desc">
+                        Modern restaurant platform built for reservations and mobile-first browsing. Optimized for hungry customers on every device.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Online Booking</span>
+                        <span class="tag">Responsive UI</span>
+                        <span class="tag">Fast Loading</span>
+                        <span class="tag">SEO-Ready</span>
+                    </div>
+                    <div class="project-stack">
+                        <i class="fas fa-layer-group"></i>
+                        Next.js • Tailwind • Firebase
+                    </div>
                 </div>
             </a>
-            <div class="project">
-                <img src="Html_apk.png" alt="Hybrid System">
-                <div class="project-meta">
-                    <div>
-                        <h3>HYBRID CORE</h3>
-                        <p style="font-size: 0.8rem; color: var(--text-secondary);">Enterprise APK Conversion</p>
+
+            <!-- PROJECT 2: FORGE GYM -->
+            <a href="https://fitnessking-eta.vercel.app/" target="_blank" class="project-card reveal reveal-delay-2">
+                <div class="project-img-wrap">
+                    <div class="browser-bar">
+                        <div class="browser-dot r"></div>
+                        <div class="browser-dot y"></div>
+                        <div class="browser-dot g"></div>
+                        <div class="browser-url"><span>fitnessking-eta.vercel.app</span></div>
                     </div>
-                    <i class="fas fa-lock"></i>
+                    <div class="project-visual">
+                        <img class="project-mock" src="4.png" alt="Forge Gym Platform"
+                             onerror="this.outerHTML=createFallback('💪','Forge Gym','#e67e22','#f39c12')">
+                    </div>
+                    <div class="live-badge">
+                        <div class="live-dot"></div> Live
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-name">FORGE GYM</div>
+                            <div class="project-type">Fitness Platform</div>
+                        </div>
+                        <div class="project-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <p class="project-desc">
+                        High-energy gym platform with membership flows, class scheduling, and a gallery built to convert and retain members.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Membership Flow</span>
+                        <span class="tag">Gallery</span>
+                        <span class="tag">Conversion UX</span>
+                        <span class="tag">Mobile-First</span>
+                    </div>
+                    <div class="project-stack">
+                        <i class="fas fa-layer-group"></i>
+                        React • Tailwind • Vercel
+                    </div>
+                </div>
+            </a>
+
+            <!-- PROJECT 3: AI STARTUP -->
+            <a href="https://startupproject-smoky.vercel.app/" target="_blank" class="project-card reveal reveal-delay-3">
+                <div class="project-img-wrap">
+                    <div class="browser-bar">
+                        <div class="browser-dot r"></div>
+                        <div class="browser-dot y"></div>
+                        <div class="browser-dot g"></div>
+                        <div class="browser-url"><span>startupproject-smoky.vercel.app</span></div>
+                    </div>
+                    <div class="project-visual">
+                        <img class="project-mock" src="7.png" alt="AI Startup Platform"
+                             onerror="this.outerHTML=createFallback('🤖','AI Startup','#6c3483','#8e44ad')">
+                    </div>
+                    <div class="live-badge concept-badge">
+                        <div class="live-dot"></div> Concept
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-name">LAUNCHPAD AI</div>
+                            <div class="project-type">AI Startup — Concept Redesign</div>
+                        </div>
+                        <div class="project-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                    <p class="project-desc">
+                        Concept redesign for a modern AI startup. Waitlist funnel, animated hero, and investor-ready landing architecture.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">Waitlist Funnel</span>
+                        <span class="tag">AI Product</span>
+                        <span class="tag">Startup UX</span>
+                        <span class="tag">Animations</span>
+                    </div>
+                    <div class="project-stack">
+                        <i class="fas fa-layer-group"></i>
+                        Next.js • Framer Motion • Vercel
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+        <!-- Legacy 2-col projects -->
+        <div class="work-grid-legacy">
+            <a href="https://adhiflyinggame.netlify.app" target="_blank" class="project-card reveal">
+                <div class="project-img-wrap" style="height:200px;">
+                    <div class="browser-bar">
+                        <div class="browser-dot r"></div>
+                        <div class="browser-dot y"></div>
+                        <div class="browser-dot g"></div>
+                        <div class="browser-url"><span>adhiflyinggame.netlify.app</span></div>
+                    </div>
+                    <div class="project-visual">
+                        <img class="project-mock" src="Adbhisn.jpg" alt="Flying Bird Game">
+                    </div>
+                    <div class="live-badge">
+                        <div class="live-dot"></div> Live
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-name">FLYING BIRD</div>
+                            <div class="project-type">Gaming &amp; Physics Engine</div>
+                        </div>
+                        <div class="project-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </div>
+            </a>
+
+            <div class="project-card reveal reveal-delay-1" style="cursor:default;">
+                <div class="project-img-wrap" style="height:200px;">
+                    <div class="browser-bar">
+                        <div class="browser-dot r"></div>
+                        <div class="browser-dot y"></div>
+                        <div class="browser-dot g"></div>
+                        <div class="browser-url"><span>internal.websinaro.app</span></div>
+                    </div>
+                    <div class="project-visual">
+                        <img class="project-mock" src="Html_apk.png" alt="Hybrid Core">
+                    </div>
+                    <div class="live-badge concept-badge">
+                        <div class="live-dot"></div> Private
+                    </div>
+                </div>
+                <div class="project-meta">
+                    <div class="project-header">
+                        <div>
+                            <div class="project-name">HYBRID CORE</div>
+                            <div class="project-type">Enterprise APK Conversion</div>
+                        </div>
+                        <div class="project-arrow"><i class="fas fa-lock"></i></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="footer-cta">
-        <h2 style="font-size: 3rem; letter-spacing: -2px; margin-bottom: 30px;">Deploy your vision.</h2>
+    <!-- ── FOOTER CTA ── -->
+    <section class="footer-cta reveal">
+        <h2>Deploy your vision.</h2>
+        <p>Let's build something that works as good as it looks.</p>
         <a href="https://contactn.netlify.app" class="cta-btn">Initialize Session</a>
     </section>
 
     <footer>
         <span>&copy; 2026 WEBSINARO SYSTEMS</span>
-        <div style="display:flex; gap: 30px;">
-            <a href="#" style="color:inherit; text-decoration: none;">INSTAGRAM</a>
-            <a href="#" style="color:inherit; text-decoration: none;">LINKEDIN</a>
+        <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
         </div>
     </footer>
+
 </div>
 
 <script>
-    // Floating Sentinel Animation
+    // ── Floating Sentinel ──
     const hub = document.getElementById('hub');
     let tick = 0;
-    function float() {
-        tick += 0.025;
-        hub.style.transform = `translateY(${Math.sin(tick) * 12}px)`;
+    (function float() {
+        tick += 0.022;
+        hub.style.transform = `translateY(${Math.sin(tick) * 14}px)`;
         requestAnimationFrame(float);
-    }
-    float();
-</script>
+    })();
 
+    // ── Cursor Glow ──
+    const glow = document.getElementById('cursorGlow');
+    if (window.matchMedia('(pointer: fine)').matches) {
+        document.addEventListener('mousemove', e => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top  = e.clientY + 'px';
+        });
+    } else {
+        if (glow) glow.style.display = 'none';
+    }
+
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                observer.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Animated Stats counter ──
+    const statNums = document.querySelectorAll('.stat-num');
+    const statObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                // just add visible animation class
+                e.target.closest('.stat').style.opacity = '1';
+                statObs.unobserve(e.target);
+            }
+        });
+    }, {threshold: 0.5});
+    statNums.forEach(s => statObs.observe(s));
+
+    // ── Image fallback helper ──
+    window.createFallback = function(emoji, name, color1, color2) {
+        return `<div style="width:100%;height:100%;background:linear-gradient(135deg,${color1}22,${color2}11);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+            <div style="font-size:3rem;">${emoji}</div>
+            <div style="font-family:'Syne',sans-serif;font-size:0.75rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);">${name}</div>
+        </div>`;
+    };
+
+    // Apply fallbacks if images fail
+    document.querySelectorAll('.project-mock').forEach(img => {
+        img.addEventListener('error', function() {
+            const parent = this.closest('.project-visual');
+            const name = this.alt || '';
+            const colors = {
+                'Ardente': ['#8B1A1A','#c0392b'],
+                'Forge Gym': ['#7B4800','#e67e22'],
+                'AI Startup': ['#4A1A6B','#8e44ad'],
+                'Flying Bird': ['#0a2a4a','#2980b9'],
+            };
+            const c = Object.entries(colors).find(([k]) => name.includes(k));
+            const [c1, c2] = c ? c[1] : ['#1a1a2e','#16213e'];
+            parent.innerHTML = `<div style="width:100%;height:100%;background:linear-gradient(135deg,${c1},${c2});display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+                <div style="font-size:2.5rem;">${name.includes('Ardente')?'🍽️':name.includes('Gym')?'💪':name.includes('AI')?'🤖':'✦'}</div>
+                <div style="font-family:'Syne',sans-serif;font-size:0.7rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.4);">${name}</div>
+            </div>`;
+        });
+    });
+</script>
 </body>
 </html>
